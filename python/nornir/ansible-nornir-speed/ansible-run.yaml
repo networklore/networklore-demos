@@ -1,0 +1,9 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: Generate template
+      template:
+        src: "ansible-base.j2"
+        dest: "output/ansible/{{ inventory_hostname }}.cfg"
