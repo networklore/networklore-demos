@@ -1,0 +1,40 @@
+module greeter {
+
+  namespace "https://github.com/networklore/networklore-demos/products/nso/coverage/packages/greeter";
+  prefix greeter;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  description
+    "Greeter package for NSO";
+
+  revision 2019-11-17 {
+    description
+      "Initial revision.";
+  }
+
+  container greeter {
+
+    tailf:action greet {
+      tailf:info "Calculate two numbers";
+      tailf:actionpoint greet;
+
+      output {
+        leaf message {
+          type string;
+        }
+      }
+    }
+
+  }
+
+
+}
