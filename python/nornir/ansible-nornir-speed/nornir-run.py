@@ -5,8 +5,6 @@ from nornir.plugins.tasks import files, text
 from nornir.plugins.functions.text import print_result
 
 
-
-
 def generate(task):
     template = task.run(
         task=text.template_file,
@@ -24,7 +22,8 @@ def generate(task):
 
 def main(inventory_size):
     nornir = InitNornir(
-        inventory={"options": {"host_file": f"nornir-inventory-{inventory_size}.yaml"}}, dry_run=False
+        inventory={"options": {"host_file": f"nornir-inventory-{inventory_size}.yaml"}},
+        dry_run=False,
     )
     result = nornir.run(task=generate)
     print_result(result)

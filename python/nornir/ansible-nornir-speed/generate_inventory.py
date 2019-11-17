@@ -3,6 +3,7 @@ import sys
 import yaml
 from faker import Faker
 
+
 def main(num_hosts):
     fake = Faker()
 
@@ -35,7 +36,6 @@ def main(num_hosts):
 
         inventory[hostname] = host
 
-
     ansible = {}
     ansible["all"] = {}
     ansible["all"]["hosts"] = inventory
@@ -59,9 +59,9 @@ def main(num_hosts):
         nornir[host]["data"]["building"] = inventory[host]["building"]
         nornir[host]["data"]["serial"] = inventory[host]["serial"]
 
-
     with open(f"nornir-inventory-{num_hosts}.yaml", "w") as fobj:
         yaml.dump(nornir, fobj, default_flow_style=False)
+
 
 if __name__ == "__main__":
     inventory_size = int(sys.argv[1])
