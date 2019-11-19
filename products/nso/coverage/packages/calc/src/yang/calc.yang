@@ -1,0 +1,63 @@
+module calc {
+
+  namespace "https://github.com/networklore/networklore-demos/products/nso/coverage/packages/calc";
+  prefix calc;
+
+  import ietf-inet-types {
+    prefix inet;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import tailf-ncs {
+    prefix ncs;
+  }
+
+  description
+    "A Calculator for NSO";
+
+  revision 2019-11-17 {
+    description
+      "Initial revision.";
+  }
+
+  container calc {
+
+    tailf:action calc {
+      tailf:info "Calculate two numbers";
+      tailf:actionpoint calc;
+
+      input {
+        leaf number-a {
+          tailf:info "The first number";
+          type uint16;
+        }
+        leaf operation {
+          tailf:info "The mathematical operation to perform";
+          type enumeration {
+            enum "addition";
+            enum "subtraction";
+            enum "multiplication";
+            enum "division";
+          }
+        }
+        leaf number-b {
+          tailf:info "The second number";
+          type uint16;
+        }
+      }
+
+      output {
+        leaf message {
+          type string;
+        }
+        leaf value {
+          type decimal64 {
+            fraction-digits 2;
+          }
+        }
+      }
+
+    }
+  }
+}
